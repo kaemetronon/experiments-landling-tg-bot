@@ -1,0 +1,26 @@
+нода
+npm install
+npm run build
+npm start
+
+или
+pm2 start npm --name my-app -- run start
+
+pm2 ls
+pm2 restart land
+
+питон
+sudo apt install -y python3 python3-venv python3-pip
+python3 --version
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install "python-telegram-bot==21.*"
+pip install python-dotenv
+python simple_bot.py
+deactivate
+
+или
+pm2 start .venv/bin/python --name tg-bot -- simple_bot.py
+
+pm2 status/logs/restart/

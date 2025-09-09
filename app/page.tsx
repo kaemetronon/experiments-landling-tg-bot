@@ -264,7 +264,7 @@ export default function TelegramBotLanding() {
                     </div>
                     <div className="flex flex-col items-center gap-3">
                       <a
-                        href="https://t.me/your_bot_here"
+                        href="https://t.me/AriyoMonitoringBot"
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3 text-accent-foreground font-semibold shadow hover:bg-accent/90"
@@ -306,22 +306,6 @@ export default function TelegramBotLanding() {
                 </div>
               </div>
             </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Поддержка</h4>
-              <div className="space-y-2 text-sm text-foreground/80">
-                <p>Telegram: @support_bot</p>
-                <p>Email: help@tbmonitor.ru</p>
-                <p>Время ответа: до 2 часов</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-border pt-8 text-center">
-            <p className="text-sm text-foreground/60 mb-2">© 2025 TelegramBot Monitor. Все права защищены.</p>
-            <p className="text-xs text-foreground/50">
-              Не аффилировано с Telegram. Используем официальный API.
-            </p>
           </div>
         </div>
       </footer>
