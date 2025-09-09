@@ -4,24 +4,13 @@ import type React from "react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { Clock, CheckCircle, Zap, Shield, Target, TrendingUp, Users, Star } from "lucide-react"
 
 export default function TelegramBotLanding() {
   const [showEmailForm, setShowEmailForm] = useState(false)
-  const [email, setEmail] = useState("")
-  const [showThankYou, setShowThankYou] = useState(false)
 
   const handleSignUp = () => {
     setShowEmailForm(true)
-  }
-
-  const handleEmailSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (email) {
-      setShowThankYou(true)
-      setShowEmailForm(false)
-    }
   }
 
   return (
@@ -48,68 +37,7 @@ export default function TelegramBotLanding() {
               публикации. <strong className="text-foreground">Будьте первым.</strong>
             </p>
 
-            {!showEmailForm && !showThankYou && (
-              <div className="space-y-4">
-                <Button
-                  size="lg"
-                  className="bg-accent hover:bg-accent/90 text-accent-foreground text-xl px-12 py-6 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                  onClick={handleSignUp}
-                >
-                  <Zap className="w-6 h-6 mr-2" />
-                  Получить доступ за 299 ₽
-                </Button>
-                <p className="text-sm text-muted-foreground">
-                  Первая неделя - бесплатново
-                </p>
-              </div>
-            )}
-
-            {showEmailForm && (
-              <Card className="max-w-lg mx-auto mt-8 border-2 border-accent/20 shadow-xl">
-                <CardContent className="p-8">
-                  <div className="text-center mb-6">
-                    <Shield className="w-12 h-12 text-accent mx-auto mb-4" />
-                    <h3 className="text-2xl font-bold mb-2">Сервис в разработке</h3>
-                    <p className="text-muted-foreground">
-                      Мы запускаемся через 2 недели. Оставьте email и получите{" "}
-                      <strong className="text-accent">50% скидку</strong> на первый месяц + приоритетный доступ.
-                    </p>
-                  </div>
-                  <form onSubmit={handleEmailSubmit} className="space-y-4">
-                    <Input
-                      type="email"
-                      placeholder="ваш@email.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      className="w-full text-lg py-3 border-2 focus:border-accent"
-                    />
-                    <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-lg py-3">
-                      Забронировать скидку 50%
-                    </Button>
-                  </form>
-                  <p className="text-xs text-muted-foreground mt-4 text-center">
-                    Никакого спама. Отписаться можно в любой момент.
-                  </p>
-                </CardContent>
-              </Card>
-            )}
-
-            {showThankYou && (
-              <Card className="max-w-lg mx-auto mt-8 border-2 border-accent shadow-xl">
-                <CardContent className="p-8 text-center">
-                  <CheckCircle className="w-16 h-16 text-accent mx-auto mb-6" />
-                  <h3 className="text-2xl font-bold mb-4">Отлично! Вы в списке</h3>
-                  <p className="text-muted-foreground mb-4">
-                    Мы отправим вам уведомление о запуске + промокод на{" "}
-                    <strong className="text-accent">50% скидку</strong>.
-                  </p>
-                  <div className="bg-accent/10 p-4 rounded-lg">
-                    <p className="text-sm text-accent font-medium">🎁 Ваша скидка: EARLY50 (сохраните код)</p>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
+            {/* CTA moved to pricing section */}
           </div>
         </div>
       </section>
@@ -207,84 +135,6 @@ export default function TelegramBotLanding() {
                 <p className="text-muted-foreground leading-relaxed">
                   Никакой работы с третьими сторонами. Бот использует официальные механизмы и API Telegram.
                 </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Social Proof Section */}
-      <h1>Стремно писать отзывы юзеров, тем более такие пиздливые, но имхо что то подобное надо добавить</h1>
-      <section className="py-20 px-4 bg-muted/30">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Что говорят пользователи</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="p-6 border-2 border-accent/10">
-              <CardContent className="space-y-4">
-                <div className="flex text-accent">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-current" />
-                  ))}
-                </div>
-                <p className="text-muted-foreground italic">
-                  "За месяц поймал 3 отличные сделки: билеты в Сочи за 4к, iPhone со скидкой 30% и квартиру в центре.
-                  Бот окупился в первую неделю!"
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
-                    <span className="text-accent font-bold">А</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold">Алексей М.</p>
-                    <p className="text-sm text-muted-foreground">Москва</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6 border-2 border-accent/10">
-              <CardContent className="space-y-4">
-                <div className="flex text-accent">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-current" />
-                  ))}
-                </div>
-                <p className="text-muted-foreground italic">
-                  "Больше не просиживаю часы в телеграме. Настроила фильтры на квартиры до 50к в нужных районах. Теперь
-                  вижу только то, что мне подходит."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
-                    <span className="text-accent font-bold">М</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold">Мария К.</p>
-                    <p className="text-sm text-muted-foreground">СПб</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6 border-2 border-accent/10">
-              <CardContent className="space-y-4">
-                <div className="flex text-accent">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-current" />
-                  ))}
-                </div>
-                <p className="text-muted-foreground italic">
-                  "Как трейдер, ценю каждую секунду. Бот присылает сигналы быстрее, чем я успеваю обновить каналы.
-                  Must-have для серьезной торговли."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
-                    <span className="text-accent font-bold">Д</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold">Дмитрий Р.</p>
-                    <p className="text-sm text-muted-foreground">Екатеринбург</p>
-                  </div>
-                </div>
               </CardContent>
             </Card>
           </div>
@@ -390,32 +240,54 @@ export default function TelegramBotLanding() {
                 </div>
               </div>
 
-              {!showEmailForm && !showThankYou && (
+              {!showEmailForm && (
                 <Button
                   size="lg"
                   className="w-full bg-accent hover:bg-accent/90 text-accent-foreground text-xl py-6 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={handleSignUp}
                 >
                   <TrendingUp className="w-6 h-6 mr-2" />
-                  Начать экономить время
+                  Получить доступ за 299 ₽
                 </Button>
               )}
 
-              <p className="text-sm text-muted-foreground">
-                💡 Если за первый месяц не найдете ни одной выгодной сделки — вернем деньги 🙃
-              </p>
+              {showEmailForm && (
+                <Card className="max-w-lg mx-auto mt-8 border-2 border-accent/20 shadow-xl">
+                  <CardContent className="p-8">
+                    <div className="text-center mb-6">
+                      <Shield className="w-12 h-12 text-accent mx-auto mb-4" />
+                      <h3 className="text-2xl font-bold mb-2">Ранний доступ</h3>
+                      <p className="text-muted-foreground">
+                        Сервис скоро запускается. Первая неделя — бесплатно. Напишите нашему боту в Telegram, чтобы
+                        попасть в waitlist и получить приглашение первым.
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-center gap-3">
+                      <a
+                        href="https://t.me/your_bot_here"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3 text-accent-foreground font-semibold shadow hover:bg-accent/90"
+                      >
+                        <Zap className="w-5 h-5" /> Написать боту в Telegram
+                      </a>
+                      <p className="text-xs text-muted-foreground">Никакого спама. Заблокировать бота можно в любой момент🐳</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
             </CardContent>
           </Card>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary text-primary-foreground py-16 px-4">
+      <footer className="bg-background text-foreground py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div className="md:col-span-2">
               <h3 className="text-3xl font-bold mb-4">TelegramBot Monitor</h3>
-              <p className="text-primary-foreground/80 mb-6 leading-relaxed">
+              <p className="text-foreground/80 mb-6 leading-relaxed">
                 Сервис мониторинга Telegram-каналов для тех, кто ценит свое время и не хочет упускать
                 выгодные возможности.
               </p>
@@ -437,7 +309,7 @@ export default function TelegramBotLanding() {
 
             <div>
               <h4 className="font-semibold mb-4">Поддержка</h4>
-              <div className="space-y-2 text-sm text-primary-foreground/80">
+              <div className="space-y-2 text-sm text-foreground/80">
                 <p>Telegram: @support_bot</p>
                 <p>Email: help@tbmonitor.ru</p>
                 <p>Время ответа: до 2 часов</p>
@@ -445,9 +317,9 @@ export default function TelegramBotLanding() {
             </div>
           </div>
 
-          <div className="border-t border-primary-foreground/20 pt-8 text-center">
-            <p className="text-sm text-primary-foreground/60 mb-2">© 2025 TelegramBot Monitor. Все права защищены.</p>
-            <p className="text-xs text-primary-foreground/50">
+          <div className="border-t border-border pt-8 text-center">
+            <p className="text-sm text-foreground/60 mb-2">© 2025 TelegramBot Monitor. Все права защищены.</p>
+            <p className="text-xs text-foreground/50">
               Не аффилировано с Telegram. Используем официальный API.
             </p>
           </div>

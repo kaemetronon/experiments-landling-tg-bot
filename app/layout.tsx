@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono"
 import { Space_Grotesk, DM_Sans } from "next/font/google"
 import { Suspense } from "react"
 import "./globals.css"
+import ThemeToggle from "@/components/ThemeToggle"
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin", "latin-ext"],
@@ -35,7 +36,10 @@ export default function RootLayout({
       <body
         className={`font-sans ${GeistSans.variable} ${GeistMono.variable} ${spaceGrotesk.variable} ${dmSans.variable}`}
       >
-<Suspense fallback={null}>{children}</Suspense>
+        <div className="fixed right-4 top-4 z-50">
+          <ThemeToggle />
+        </div>
+        <Suspense fallback={null}>{children}</Suspense>
       </body>
     </html>
   )
